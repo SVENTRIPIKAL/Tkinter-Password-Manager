@@ -9,7 +9,7 @@ window.resizable(width=False, height=False)
 
 
 # ---------------------------- CANVAS ------------------------------- #
-canvas = tk.Canvas(width=CANVAS_WIDTH, height=CANVAS_HEIGHT, bg=WHITE)
+canvas = tk.Canvas(width=CANVAS_WIDTH, height=CANVAS_HEIGHT, bg=WHITE, highlightthickness=0)
 canvas.grid(column=1, row=0)
 
 
