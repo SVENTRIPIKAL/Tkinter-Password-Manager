@@ -1,4 +1,4 @@
-# INTEGERS
+# ---------------------------- INTEGERS ------------------------------- #
 TWO_HUNDRED = 200
 THREE_HUNDRED = 300
 
