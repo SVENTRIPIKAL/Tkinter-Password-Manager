@@ -11,6 +11,10 @@ CENTER = 'center'
 ARIAL = 'Arial'
 BOLD = 'bold'
 
+E = 'E'
+W = 'W'
+WE = f'{W}{E}'
+
 
 # ---------------------------- DEFAULTS ------------------------------- #
 WINDOW_WIDTH = THREE_HUNDRED
