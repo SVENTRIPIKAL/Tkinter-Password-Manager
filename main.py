@@ -44,6 +44,22 @@ def entry_fields_complete(*args) -> bool:
     return not EMPTY in args
 
 
+def save_json(save_data:  dict[str, dict[str, str]]):
+    """ reads & updates JSON data to file path """
+    with open(FILE_PATH, R_PLUS) as file:
+        file_data = json.load(fp=file)
+        file_data.update(save_data)
+        file.seek(ZERO)
+        json.dump(obj=file_data, fp=file, indent=4)
+        file.truncate()
+
+
+def create_file():
+    """ create file with empty JSON data """
+    with open(FILE_PATH, W.lower()) as file:
+        json.dump(obj={}, fp=file)
+
+
 def save_information():
     """ saves information from entry fields to file 'IGNORE' """
     we_text, ue_text, pe_text = website_entry.get(), username_entry.get(), password_entry.get()
@@ -64,17 +80,17 @@ def save_information():
             detail=json_data, default=info_box.NO
         )
         if user_response:
-            # save to file
-            with open(FILE_PATH, R_PLUS) as file:
-                file_data = json.load(fp=file)
-                file_data.update(save_data)
-                file.seek(ZERO)
-                json.dump(obj=file_data, fp=file, indent=4)
-                file.truncate()
-            # display success
-            info_box.showinfo(message=SUCCESS_MESSAGE)
-            clear_fields()
-
+            while True:
+                try:
+                    # save to file
+                    save_json(save_data)
+                except (ValueError, FileNotFoundError):
+                    create_file()
+                else:
+                    # display success
+                    info_box.showinfo(message=SUCCESS_MESSAGE)
+                    clear_fields()
+                    break
     else: # display error
         info_box.showerror(message=ERROR_MESSAGE)
 
