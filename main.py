@@ -40,7 +40,7 @@ def save_information():
     we_text, ue_text, pe_text = website_entry.get(), username_entry.get(), password_entry.get()
     # verify fields
     if entry_fields_complete(we_text, ue_text, pe_text):
-        save_data = f'WEBSITE: {we_text} | EMAIL/USERNAME: {ue_text} | PASSWORD: {pe_text}'
+        save_data = f'{WEBSITE}: {we_text} | {USERNAME}: {ue_text} | {PASSWORD}: {pe_text}'
         # display validate response
         user_response = info_box.askyesno(
             title=None, message=VALIDATE_MESSAGE, icon=info_box.QUESTION,
@@ -76,13 +76,13 @@ canvas.create_image(CANVAS_WIDTH//2, CANVAS_HEIGHT//2, image=img, anchor=CENTER)
 
 
 # ---------------------------- LABELS ------------------------------- #
-website = tk.Label(text='Website:', font=DEFAULT_FONT, bg=WHITE)
+website = tk.Label(text=f'{WEBSITE.title()}:', font=DEFAULT_FONT, bg=WHITE)
 website.grid(column=0, row=1, sticky=WE, padx=5)
 
-username = tk.Label(text='Email/Username:', font=DEFAULT_FONT, bg=WHITE)
+username = tk.Label(text=f'{USERNAME.title()}:', font=DEFAULT_FONT, bg=WHITE)
 username.grid(column=0, row=2, sticky=WE, padx=5)
 
-password = tk.Label(text='Password:', font=DEFAULT_FONT, bg=WHITE)
+password = tk.Label(text=f'{PASSWORD.title()}:', font=DEFAULT_FONT, bg=WHITE)
 password.grid(column=0, row=3, sticky=WE, padx=5)
 
 

@@ -21,6 +21,10 @@ WE = f'{W}{E}'
 
 FILE_PATH = './IGNORE'
 
+WEBSITE = 'WEBSITE'
+USERNAME = 'EMAIL/USERNAME'
+PASSWORD = 'PASSWORD'
+
 PROGRAM_NAME = 'MyPass Password Manager'
 VALIDATE_MESSAGE = "Save This To File 'IGNORE'?"
 ERROR_MESSAGE = 'Please Complete All Fields'
