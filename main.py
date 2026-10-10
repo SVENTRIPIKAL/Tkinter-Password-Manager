@@ -21,6 +21,14 @@ def generate_password():
     password_entry.insert(index=ZERO, string=EMPTY.join(new_password))
 
 
+def clear_fields():
+    """ clears entry fields & refocuses cursor to first entry """
+    website_entry.delete(ZERO, tk.END)
+    username_entry.delete(ZERO, tk.END)
+    password_entry.delete(ZERO, tk.END)
+    website_entry.focus()
+
+
 def save_information():
     """ saves information from entry fields to file """
     we_text = website_entry.get()
@@ -28,6 +36,7 @@ def save_information():
     pe_text = password_entry.get()
     with open(FILE_PATH, A) as writer:
         writer.write(f'WEBSITE: {we_text} | EMAIL/USERNAME: {ue_text} | PASSWORD: {pe_text}\n')
+    clear_fields()
 
 
 # ---------------------------- WINDOW ------------------------------- #
@@ -59,6 +68,7 @@ password.grid(column=0, row=3, sticky=WE, padx=5)
 
 # ---------------------------- ENTRIES ------------------------------- #
 website_entry = tk.Entry()
+website_entry.focus()
 website_entry.grid(column=1, row=1, columnspan=2, sticky=WE, padx=5, pady=5)
 
 username_entry = tk.Entry()
