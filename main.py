@@ -21,6 +21,15 @@ def generate_password():
     password_entry.insert(index=ZERO, string=EMPTY.join(new_password))
 
 
+def save_information():
+    """ saves information from entry fields to file """
+    we_text = website_entry.get()
+    ue_text = username_entry.get()
+    pe_text = password_entry.get()
+    with open(FILE_PATH, A) as writer:
+        writer.write(f'WEBSITE: {we_text} | EMAIL/USERNAME: {ue_text} | PASSWORD: {pe_text}\n')
+
+
 # ---------------------------- WINDOW ------------------------------- #
 window = tk.Tk()
 window.config(width=WINDOW_WIDTH, height=WINDOW_HEIGHT, padx=20, pady=20, bg=WHITE)
@@ -63,7 +72,7 @@ password_entry.grid(column=1, row=3, sticky=WE, padx=5, pady=5)
 generate_button = tk.Button(text='Generate Password', command=generate_password)
 generate_button.grid(column=2, row=3, sticky=WE, padx=5, pady=5)
 
-add_button = tk.Button(text='Add')
+add_button = tk.Button(text='Add', command=save_information)
 add_button.grid(column=1, row=4, columnspan=2, sticky=WE, padx=5, pady=5)
 
 

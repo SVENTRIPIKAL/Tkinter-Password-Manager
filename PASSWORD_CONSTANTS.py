@@ -14,9 +14,12 @@ EMPTY = ''
 ARIAL = 'Arial'
 BOLD = 'bold'
 
-E = 'E'
 W = 'W'
+E = 'E'
+A = 'a'
 WE = f'{W}{E}'
+
+FILE_PATH = './ignore/password_manager'
 
 
 # ---------------------------- DEFAULTS ------------------------------- #
