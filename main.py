@@ -1,3 +1,4 @@
+import json
 import random
 import tkinter as tk
 import tkinter.messagebox as info_box
@@ -21,6 +22,7 @@ def generate_password():
     new_password = EMPTY.join([random.choice(all_symbols) for _ in range(FORTY_TWO)])
 
     # save to password field
+    password_entry.focus()
     password_entry.delete(first=ZERO, last=tk.END)
     password_entry.insert(index=ZERO, string=new_password)
 
@@ -47,16 +49,24 @@ def save_information():
     we_text, ue_text, pe_text = website_entry.get(), username_entry.get(), password_entry.get()
     # verify fields
     if entry_fields_complete(we_text, ue_text, pe_text):
-        save_data = f'{WEBSITE}: {we_text} | {USERNAME}: {ue_text} | {PASSWORD}: {pe_text}'
+        # save data as dictionary
+        save_data = {
+            we_text.upper() : {
+                USERNAME : ue_text,
+                PASSWORD : pe_text
+            }
+        }
+        # dump as JSON string
+        json_data = json.dumps(save_data, indent=4)
         # display validate response
         user_response = info_box.askyesno(
             title=None, message=VALIDATE_MESSAGE, icon=info_box.QUESTION,
-            detail=save_data.replace(' | ', '\n'), default=info_box.NO
+            detail=json_data, default=info_box.NO
         )
         if user_response:
             # save to file
             with open(FILE_PATH, A) as writer:
-                writer.write(f'{save_data}\n')
+                writer.write(f'{json_data}\n')
             # display success
             info_box.showinfo(message=SUCCESS_MESSAGE)
             clear_fields()
