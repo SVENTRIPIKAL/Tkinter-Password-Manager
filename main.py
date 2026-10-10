@@ -57,7 +57,7 @@ def save_information():
             }
         }
         # dump as JSON string
-        json_data = json.dumps(save_data, indent=4)
+        json_data = json.dumps(obj=save_data, indent=4)
         # display validate response
         user_response = info_box.askyesno(
             title=None, message=VALIDATE_MESSAGE, icon=info_box.QUESTION,
@@ -65,8 +65,12 @@ def save_information():
         )
         if user_response:
             # save to file
-            with open(FILE_PATH, A) as writer:
-                writer.write(f'{json_data}\n')
+            with open(FILE_PATH, R_PLUS) as file:
+                file_data = json.load(fp=file)
+                file_data.update(save_data)
+                file.seek(ZERO)
+                json.dump(obj=file_data, fp=file, indent=4)
+                file.truncate()
             # display success
             info_box.showinfo(message=SUCCESS_MESSAGE)
             clear_fields()

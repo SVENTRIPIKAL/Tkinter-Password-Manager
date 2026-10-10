@@ -16,7 +16,7 @@ BOLD = 'bold'
 
 W = 'W'
 E = 'E'
-A = 'a'
+R_PLUS = 'r+'
 WE = f'{W}{E}'
 
 FILE_PATH = './IGNORE'
