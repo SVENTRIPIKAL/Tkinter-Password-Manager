@@ -26,6 +26,7 @@ USERNAME = 'EMAIL/USERNAME'
 PASSWORD = 'PASSWORD'
 
 PROGRAM_NAME = 'MyPass Password Manager'
+CLIPBOARD_MESSAGE = 'Saved To Clipboard'
 VALIDATE_MESSAGE = "Save This To File 'IGNORE'?"
 ERROR_MESSAGE = 'Please Complete All Fields'
 SUCCESS_MESSAGE = 'Save Successful'

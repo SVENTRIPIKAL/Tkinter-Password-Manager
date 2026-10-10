@@ -3,12 +3,14 @@ import tkinter as tk
 import tkinter.messagebox as info_box
 from string import ascii_lowercase, ascii_uppercase, digits, punctuation
 
+import pyperclip
+
 from PASSWORD_CONSTANTS import *
 
 
 # ---------------------------- FUNCTIONS ------------------------------- #
 def generate_password():
-    """ adds a random 42 length password to password entry field """
+    """ adds a random 42 length password to password field & user clipboard """
     _lowercase = list(ascii_lowercase)
     _uppercase = list(ascii_uppercase)
     _digits = list(digits)
@@ -16,10 +18,15 @@ def generate_password():
 
     all_symbols = _lowercase + _uppercase + _digits + _punctuation
 
-    new_password = [random.choice(all_symbols) for _ in range(FORTY_TWO)]
+    new_password = EMPTY.join([random.choice(all_symbols) for _ in range(FORTY_TWO)])
 
+    # save to password field
     password_entry.delete(first=ZERO, last=tk.END)
-    password_entry.insert(index=ZERO, string=EMPTY.join(new_password))
+    password_entry.insert(index=ZERO, string=new_password)
+
+    # save to clipboard
+    pyperclip.copy(new_password)
+    info_box.showinfo(message=CLIPBOARD_MESSAGE)
 
 
 def clear_fields():
