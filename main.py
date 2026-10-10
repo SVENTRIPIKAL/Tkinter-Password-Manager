@@ -1,6 +1,25 @@
+import random
 import tkinter as tk
+from string import ascii_lowercase, ascii_uppercase, digits, punctuation
 
 from PASSWORD_CONSTANTS import *
+
+
+# ---------------------------- FUNCTIONS ------------------------------- #
+def generate_password():
+    """ adds a random 42 length password to password entry field """
+    _lowercase = list(ascii_lowercase)
+    _uppercase = list(ascii_uppercase)
+    _digits = list(digits)
+    _punctuation = list(punctuation)
+
+    all_symbols = _lowercase + _uppercase + _digits + _punctuation
+
+    new_password = [random.choice(all_symbols) for _ in range(FORTY_TWO)]
+
+    password_entry.delete(first=ZERO, last=tk.END)
+    password_entry.insert(index=ZERO, string=EMPTY.join(new_password))
+
 
 # ---------------------------- WINDOW ------------------------------- #
 window = tk.Tk()
@@ -41,7 +60,7 @@ password_entry.grid(column=1, row=3, sticky=WE, padx=5, pady=5)
 
 
 # ---------------------------- BUTTONS ------------------------------- #
-generate_button = tk.Button(text='Generate Password')
+generate_button = tk.Button(text='Generate Password', command=generate_password)
 generate_button.grid(column=2, row=3, sticky=WE, padx=5, pady=5)
 
 add_button = tk.Button(text='Add')

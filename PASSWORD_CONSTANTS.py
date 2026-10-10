@@ -1,4 +1,6 @@
 # ---------------------------- INTEGERS ------------------------------- #
+ZERO = 0
+FORTY_TWO = 42
 TWO_HUNDRED = 200
 THREE_HUNDRED = 300
 
@@ -8,6 +10,7 @@ LOGO_PNG = './logo.png'
 WHITE = 'white'
 CENTER = 'center'
 
+EMPTY = ''
 ARIAL = 'Arial'
 BOLD = 'bold'
 
