@@ -19,7 +19,7 @@ E = 'E'
 A = 'a'
 WE = f'{W}{E}'
 
-FILE_PATH = './ignore/password_manager'
+FILE_PATH = './IGNORE'
 
 
 # ---------------------------- DEFAULTS ------------------------------- #
