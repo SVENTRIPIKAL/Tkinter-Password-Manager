@@ -21,6 +21,11 @@ WE = f'{W}{E}'
 
 FILE_PATH = './IGNORE'
 
+PROGRAM_NAME = 'MyPass Password Manager'
+VALIDATE_MESSAGE = "Save This To File 'IGNORE'?"
+ERROR_MESSAGE = 'Please Complete All Fields'
+SUCCESS_MESSAGE = 'Save Successful'
+
 
 # ---------------------------- DEFAULTS ------------------------------- #
 WINDOW_WIDTH = THREE_HUNDRED

@@ -1,5 +1,6 @@
 import random
 import tkinter as tk
+import tkinter.messagebox as info_box
 from string import ascii_lowercase, ascii_uppercase, digits, punctuation
 
 from PASSWORD_CONSTANTS import *
@@ -29,18 +30,37 @@ def clear_fields():
     website_entry.focus()
 
 
+def entry_fields_complete(*args) -> bool:
+    """ returns True if all fields contain text """
+    return not EMPTY in args
+
+
 def save_information():
-    """ saves information from entry fields to file """
-    we_text = website_entry.get()
-    ue_text = username_entry.get()
-    pe_text = password_entry.get()
-    with open(FILE_PATH, A) as writer:
-        writer.write(f'WEBSITE: {we_text} | EMAIL/USERNAME: {ue_text} | PASSWORD: {pe_text}\n')
-    clear_fields()
+    """ saves information from entry fields to file 'IGNORE' """
+    we_text, ue_text, pe_text = website_entry.get(), username_entry.get(), password_entry.get()
+    # verify fields
+    if entry_fields_complete(we_text, ue_text, pe_text):
+        save_data = f'WEBSITE: {we_text} | EMAIL/USERNAME: {ue_text} | PASSWORD: {pe_text}'
+        # display validate response
+        user_response = info_box.askyesno(
+            title=None, message=VALIDATE_MESSAGE, icon=info_box.QUESTION,
+            detail=save_data.replace(' | ', '\n'), default=info_box.NO
+        )
+        if user_response:
+            # save to file
+            with open(FILE_PATH, A) as writer:
+                writer.write(f'{save_data}\n')
+            # display success
+            info_box.showinfo(message=SUCCESS_MESSAGE)
+            clear_fields()
+
+    else: # display error
+        info_box.showerror(message=ERROR_MESSAGE)
 
 
 # ---------------------------- WINDOW ------------------------------- #
 window = tk.Tk()
+window.title(PROGRAM_NAME)
 window.config(width=WINDOW_WIDTH, height=WINDOW_HEIGHT, padx=20, pady=20, bg=WHITE)
 window.resizable(width=False, height=False)
 
