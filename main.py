@@ -96,10 +96,15 @@ def save_information():
 
 
 def search(json_key: str):
-    """ returns JSON key file data or None """
+    """ displays JSON key file data or Error message """
     with open(FILE_PATH, R) as file:
         file_data = json.load(fp=file)
-        return file_data.get(json_key)
+        json_data = file_data.get(json_key)
+        if json_data:
+            _username, _password = json_data.values()
+            info_box.showinfo(message=f'USERNAME: {_username}\n\nPASSWORD: {_password}')
+        else:
+            info_box.showinfo(message=CREDENTIALS_MESSAGE, icon=info_box.ERROR)
 
 
 def find_password():
@@ -107,12 +112,7 @@ def find_password():
     we_text = website_entry.get().upper()
     while True:
         try:
-            json_data = search(json_key=we_text)
-            if json_data:
-                _username, _password = json_data.values()
-                info_box.showinfo(message=f'USERNAME: {_username}\n\nPASSWORD: {_password}')
-            else:
-                info_box.showinfo(message=CREDENTIALS_MESSAGE, icon=info_box.ERROR)
+            search(json_key=we_text)
         except (ValueError, FileNotFoundError):
             create_file()
         else:
