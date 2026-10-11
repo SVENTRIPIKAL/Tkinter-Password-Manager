@@ -132,12 +132,15 @@ username_entry = tk.Entry()
 username_entry.grid(column=1, row=2, columnspan=2, sticky=WE, padx=5, pady=5)
 
 password_entry = tk.Entry()
-password_entry.grid(column=1, row=3, sticky=WE, padx=5, pady=5)
+password_entry.grid(column=1, row=3, columnspan=2, sticky=WE, padx=5, pady=5)
 
 
 # ---------------------------- BUTTONS ------------------------------- #
+add_button = tk.Button(text='Search')
+add_button.grid(column=3, row=1, sticky=WE, padx=5, pady=5)
+
 generate_button = tk.Button(text='Generate Password', command=generate_password)
-generate_button.grid(column=2, row=3, sticky=WE, padx=5, pady=5)
+generate_button.grid(column=3, row=3, sticky=E, padx=5, pady=5)
 
 add_button = tk.Button(text='Add', command=save_information)
 add_button.grid(column=1, row=4, columnspan=2, sticky=WE, padx=5, pady=5)
