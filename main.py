@@ -104,7 +104,7 @@ def search(json_key: str):
             _username, _password = json_data.values()
             info_box.showinfo(message=f'USERNAME: {_username}\n\nPASSWORD: {_password}')
         else:
-            info_box.showinfo(message=CREDENTIALS_MESSAGE, icon=info_box.ERROR)
+            info_box.showerror(message=CREDENTIALS_MESSAGE)
 
 
 def find_password():
