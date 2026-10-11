@@ -95,6 +95,30 @@ def save_information():
         info_box.showerror(message=ERROR_MESSAGE)
 
 
+def search(json_key: str):
+    """ returns JSON key file data or None """
+    with open(FILE_PATH, R) as file:
+        file_data = json.load(fp=file)
+        return file_data.get(json_key)
+
+
+def find_password():
+    """ checks file for credential information if available """
+    we_text = website_entry.get().upper()
+    while True:
+        try:
+            json_data = search(json_key=we_text)
+            if json_data:
+                _username, _password = json_data.values()
+                info_box.showinfo(message=f'USERNAME: {_username}\n\nPASSWORD: {_password}')
+            else:
+                info_box.showinfo(message=CREDENTIALS_MESSAGE, icon=info_box.ERROR)
+        except (ValueError, FileNotFoundError):
+            create_file()
+        else:
+            break
+
+
 # ---------------------------- WINDOW ------------------------------- #
 window = tk.Tk()
 window.title(PROGRAM_NAME)
@@ -136,7 +160,7 @@ password_entry.grid(column=1, row=3, columnspan=2, sticky=WE, padx=5, pady=5)
 
 
 # ---------------------------- BUTTONS ------------------------------- #
-add_button = tk.Button(text='Search')
+add_button = tk.Button(text='Search', command=find_password)
 add_button.grid(column=3, row=1, sticky=WE, padx=5, pady=5)
 
 generate_button = tk.Button(text='Generate Password', command=generate_password)

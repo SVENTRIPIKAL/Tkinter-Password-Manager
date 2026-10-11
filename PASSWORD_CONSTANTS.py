@@ -16,7 +16,8 @@ BOLD = 'bold'
 
 W = 'W'
 E = 'E'
-R_PLUS = 'r+'
+R = 'r'
+R_PLUS = f'{R}+'
 WE = f'{W}{E}'
 
 FILE_PATH = './IGNORE'
@@ -30,6 +31,7 @@ CLIPBOARD_MESSAGE = 'Saved To Clipboard'
 VALIDATE_MESSAGE = "Save This To File 'IGNORE'?"
 ERROR_MESSAGE = 'Please Complete All Fields'
 SUCCESS_MESSAGE = 'Save Successful'
+CREDENTIALS_MESSAGE = 'No Website Credentials Found'
 
 
 # ---------------------------- DEFAULTS ------------------------------- #
