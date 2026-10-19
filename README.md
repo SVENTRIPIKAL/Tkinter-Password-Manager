@@ -10,6 +10,7 @@ A basic Password Manager using Tkinter for its Graphical User Interface
 - Searching for a **Website** returns the **Username & Password** associated with it
 - **Generate Password** returns a random 42 length password for saving
 - **Add** saves all input field information to file & updates any existing **Website** credentials
+- Credentials are saved using **JSON** format
 
 ## Examples
 <img src="./images/example.png" alt="Example Photo" width="556">
